@@ -7,7 +7,7 @@ ADD download/oracle-instantclient${INSTANTCLIENT_VERSION}-basiclite-${INSTANTCLI
 ADD download/oracle-instantclient${INSTANTCLIENT_VERSION}-devel-${INSTANTCLIENT_VERSION}.0.0.0-${INSTANTCLIENT_BUILD}.x86_64.rpm /tmp/
 RUN apt-get update \
     && apt-get install -y --no-install-recommends alien libaio1 \
-    && alien -i /tmp/oracle-instantclient${INSTANTCLIENT_VERSION}-basiclite-${INSTANTCLIENT_VERSION}.0.0.0-${INSTANTCLIENT_BUILD}.x86_64.rpm \
+    && alien -i /tmp/oracle-instantclient${INSTANTCLIENT_VERSION}-basiclite-${INSTANTCLIENT_VERSION}.0.0.0-${INSTANTCLIENT_BUILD}.x86_64.rpm --scripts \
     && alien -i /tmp/oracle-instantclient${INSTANTCLIENT_VERSION}-devel-${INSTANTCLIENT_VERSION}.0.0.0-${INSTANTCLIENT_BUILD}.x86_64.rpm \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/* /tmp/* /var/tmp/* \
     && apt-get purge -y --auto-remove alien
